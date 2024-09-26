@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 
 import {
@@ -6,6 +7,7 @@ import {
   ReconnectButton,
   SendHelloButton,
   Card,
+  GetQRButton,
 } from '../components';
 import { defaultSnapOrigin } from '../config';
 import {
@@ -15,6 +17,10 @@ import {
   useRequestSnap,
 } from '../hooks';
 import { isLocalSnap, shouldDisplayReconnectButton } from '../utils';
+
+type SnapResponse = {
+  qrCode: string;
+};
 
 const Container = styled.div`
   display: flex;
@@ -63,25 +69,6 @@ const CardContainer = styled.div`
   margin-top: 1.5rem;
 `;
 
-const Notice = styled.div`
-  background-color: ${({ theme }) => theme.colors.background?.alternative};
-  border: 1px solid ${({ theme }) => theme.colors.border?.default};
-  color: ${({ theme }) => theme.colors.text?.alternative};
-  border-radius: ${({ theme }) => theme.radii.default};
-  padding: 2.4rem;
-  margin-top: 2.4rem;
-  max-width: 60rem;
-  width: 100%;
-
-  & > * {
-    margin: 0;
-  }
-  ${({ theme }) => theme.mediaQueries.small} {
-    margin-top: 1.2rem;
-    padding: 1.6rem;
-  }
-`;
-
 const ErrorMessage = styled.div`
   background-color: ${({ theme }) => theme.colors.error?.muted};
   border: 1px solid ${({ theme }) => theme.colors.error?.default};
@@ -105,6 +92,7 @@ const Index = () => {
   const { isFlask, snapsDetected, installedSnap } = useMetaMask();
   const requestSnap = useRequestSnap();
   const invokeSnap = useInvokeSnap();
+  const [qr, setQr] = useState<string | null>(null);
 
   const isMetaMaskReady = isLocalSnap(defaultSnapOrigin)
     ? isFlask
@@ -112,6 +100,11 @@ const Index = () => {
 
   const handleSendHelloClick = async () => {
     await invokeSnap({ method: 'hello' });
+  };
+
+  const handleGetQrClick = async () => {
+    const res = await invokeSnap<SnapResponse>({ method: 'qr_string' });
+    setQr(res.response.qrCode);
   };
 
   return (
@@ -190,14 +183,33 @@ const Index = () => {
             !shouldDisplayReconnectButton(installedSnap)
           }
         />
-        <Notice>
-          <p>
-            Please note that the <b>snap.manifest.json</b> and{' '}
-            <b>package.json</b> must be located in the server root directory and
-            the bundle must be hosted at the location specified by the location
-            field.
-          </p>
-        </Notice>
+        <Card
+          content={{
+            title: 'Get QR string',
+            description:
+              'Display a random QR code within a confirmation screen in MetaMask.',
+            button: (
+              <GetQRButton
+                onClick={handleGetQrClick}
+                disabled={!installedSnap}
+              />
+            ),
+          }}
+          disabled={!installedSnap}
+          fullWidth={
+            isMetaMaskReady &&
+            Boolean(installedSnap) &&
+            !shouldDisplayReconnectButton(installedSnap)
+          }
+        />
+        <Card
+          content={{
+            title: 'QR code',
+            description: `qr: ${qr ?? 'null'}`,
+          }}
+          disabled={!installedSnap}
+          fullWidth
+        />
       </CardContainer>
     </Container>
   );

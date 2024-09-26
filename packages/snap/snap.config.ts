@@ -7,8 +7,14 @@ const config: SnapConfig = {
   server: {
     port: 8080,
   },
+  stats: {
+    builtIns: { ignore: ['fs', 'path', 'crypto'] },
+  },
   polyfills: {
     buffer: true,
+    stream: true,
+    crypto: true,
+    path: true,
   },
 };
 

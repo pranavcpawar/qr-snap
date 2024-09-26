@@ -1,6 +1,8 @@
 import type { OnRpcRequestHandler } from '@metamask/snaps-sdk';
 import { Box, Text, Bold } from '@metamask/snaps-sdk/jsx';
 
+import * as sdk from './sdk';
+
 /**
  * Handle incoming JSON-RPC requests, sent through `wallet_invokeSnap`.
  *
@@ -37,6 +39,26 @@ export const onRpcRequest: OnRpcRequestHandler = async ({
           ),
         },
       });
+    case 'qr_string': {
+      await snap.request({
+        method: 'snap_dialog',
+        params: {
+          type: 'confirmation',
+          content: (
+            <Box>
+              <Text>
+                This custom confirmation to display a message to the user.
+              </Text>
+              <Text>🚀 Happy Coding! </Text>
+            </Box>
+          ),
+        },
+      });
+      // comment out this line to see the error
+      // const qr = 'Hello World';
+      const qr = await sdk.initPairing();
+      return { qrCode: qr };
+    }
     default:
       throw new Error('Method not found.');
   }

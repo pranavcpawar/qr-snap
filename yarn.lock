@@ -4916,6 +4916,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/libsodium-wrappers@npm:^0.7.10":
+  version: 0.7.14
+  resolution: "@types/libsodium-wrappers@npm:0.7.14"
+  checksum: 565d178cd12aa5f7abc03149e50a962450d797e995935368ca1abe1cb5a5b96d81f3115a91f6b6f7dcff210d25f104003708b4bfc5a34751f23460efeb169fa4
+  languageName: node
+  linkType: hard
+
 "@types/lodash@npm:^4.14.92":
   version: 4.14.195
   resolution: "@types/lodash@npm:4.14.195"
@@ -6471,7 +6478,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bn.js@npm:5.2.1, bn.js@npm:^5.0.0, bn.js@npm:^5.2.1":
+"bn.js@npm:5.2.1, bn.js@npm:^5.0.0, bn.js@npm:^5.2.0, bn.js@npm:^5.2.1":
   version: 5.2.1
   resolution: "bn.js@npm:5.2.1"
   checksum: 3dd8c8d38055fedfa95c1d5fc3c99f8dd547b36287b37768db0abab3c239711f88ff58d18d155dd8ad902b0b0cee973747b7ae20ea12a09473272b0201c9edd3
@@ -7839,6 +7846,13 @@ __metadata:
     randombytes: ^2.0.0
     randomfill: ^1.0.3
   checksum: c1609af82605474262f3eaa07daa0b2140026bd264ab316d4bf1170272570dbe02f0c49e29407fe0d3634f96c507c27a19a6765fb856fed854a625f9d15618e2
+  languageName: node
+  linkType: hard
+
+"crypto-js@npm:^4.1.1":
+  version: 4.2.0
+  resolution: "crypto-js@npm:4.2.0"
+  checksum: f051666dbc077c8324777f44fbd3aaea2986f198fe85092535130d17026c7c2ccf2d23ee5b29b36f7a4a07312db2fae23c9094b644cc35f7858b1b4fcaf27774
   languageName: node
   linkType: hard
 
@@ -13003,6 +13017,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"keccak256@npm:^1.0.6":
+  version: 1.0.6
+  resolution: "keccak256@npm:1.0.6"
+  dependencies:
+    bn.js: ^5.2.0
+    buffer: ^6.0.3
+    keccak: ^3.0.2
+  checksum: decafb4b37adcfa6d06b6a5d28546d0d7a9f01ccf4b8cc8963cf8188fcc79a230d7e22988e860813623c602d764259734423e38fd7b9aadfeb409d6928a1d4cf
+  languageName: node
+  linkType: hard
+
+"keccak@npm:^3.0.2":
+  version: 3.0.4
+  resolution: "keccak@npm:3.0.4"
+  dependencies:
+    node-addon-api: ^2.0.0
+    node-gyp: latest
+    node-gyp-build: ^4.2.0
+    readable-stream: ^3.6.0
+  checksum: 2bf27b97b2f24225b1b44027de62be547f5c7326d87d249605665abd0c8c599d774671c35504c62c9b922cae02758504c6f76a73a84234d23af8a2211afaaa11
+  languageName: node
+  linkType: hard
+
 "keyv@npm:^4.0.0, keyv@npm:^4.5.3":
   version: 4.5.4
   resolution: "keyv@npm:4.5.4"
@@ -13091,6 +13128,22 @@ __metadata:
     prelude-ls: ^1.2.1
     type-check: ~0.4.0
   checksum: 12c5021c859bd0f5248561bf139121f0358285ec545ebf48bb3d346820d5c61a4309535c7f387ed7d84361cf821e124ce346c6b7cef8ee09a67c1473b46d0fc4
+  languageName: node
+  linkType: hard
+
+"libsodium-wrappers@npm:^0.7.11":
+  version: 0.7.15
+  resolution: "libsodium-wrappers@npm:0.7.15"
+  dependencies:
+    libsodium: ^0.7.15
+  checksum: 35bd4d4a4ced47ed69b0e1f1772651507a7224285d6487c4c0d9a5ab80e0daf2c225e069474d0cd640fcd4152608b51005fff8f107e12e04545a92e8db45e422
+  languageName: node
+  linkType: hard
+
+"libsodium@npm:^0.7.15":
+  version: 0.7.15
+  resolution: "libsodium@npm:0.7.15"
+  checksum: c641fee43415c8c516c531303439ab89cd1e72de56e3f9fd9e07f695a2cf0fe8f3095f6015db5e351ae4693a1ba50ac18cb19b3e0d241be0546b82319166abe0
   languageName: node
   linkType: hard
 
@@ -14100,6 +14153,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"node-addon-api@npm:^2.0.0":
+  version: 2.0.2
+  resolution: "node-addon-api@npm:2.0.2"
+  dependencies:
+    node-gyp: latest
+  checksum: 31fb22d674648204f8dd94167eb5aac896c841b84a9210d614bf5d97c74ef059cc6326389cf0c54d2086e35312938401d4cc82e5fcd679202503eb8ac84814f8
+  languageName: node
+  linkType: hard
+
 "node-addon-api@npm:^4.3.0":
   version: 4.3.0
   resolution: "node-addon-api@npm:4.3.0"
@@ -14160,6 +14222,17 @@ __metadata:
     node-gyp-build-optional-packages-optional: optional.js
     node-gyp-build-optional-packages-test: build-test.js
   checksum: bcb4537af15bcb3811914ea0db8f69284ca10db1cc7543a167a4c41ae4b9b5044b133f789fdadad0b7adc6931f6ae7def3c75b0bc7b05836881aae52400163e6
+  languageName: node
+  linkType: hard
+
+"node-gyp-build@npm:^4.2.0":
+  version: 4.8.2
+  resolution: "node-gyp-build@npm:4.8.2"
+  bin:
+    node-gyp-build: bin.js
+    node-gyp-build-optional: optional.js
+    node-gyp-build-test: build-test.js
+  checksum: 1a57bba8c4c193f808bd8ad1484d4ebdd8106dd9f04a3e82554dc716e3a2d87d7e369e9503c145e0e6a7e2c663fec0d8aaf52bd8156342ec7fc388195f37824e
   languageName: node
   linkType: hard
 
@@ -16956,9 +17029,11 @@ __metadata:
     "@metamask/snaps-cli": ^6.2.1
     "@metamask/snaps-jest": ^8.2.0
     "@metamask/snaps-sdk": ^6.1.1
+    "@types/libsodium-wrappers": ^0.7.10
     "@typescript-eslint/eslint-plugin": ^5.42.1
     "@typescript-eslint/parser": ^5.42.1
     buffer: ^6.0.3
+    crypto-js: ^4.1.1
     eslint: ^8.45.0
     eslint-config-prettier: ^8.5.0
     eslint-plugin-import: ~2.26.0
@@ -16968,11 +17043,14 @@ __metadata:
     eslint-plugin-prettier: ^4.2.1
     eslint-plugin-promise: ^6.1.1
     jest: ^29.5.0
+    keccak256: ^1.0.6
+    libsodium-wrappers: ^0.7.11
     prettier: ^2.7.1
     prettier-plugin-packagejson: ^2.2.11
     rimraf: ^3.0.2
     ts-jest: ^29.1.0
     typescript: ^4.7.4
+    uuid: ^9.0.0
   languageName: unknown
   linkType: soft
 
@@ -18492,7 +18570,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"uuid@npm:^9.0.1":
+"uuid@npm:^9.0.0, uuid@npm:^9.0.1":
   version: 9.0.1
   resolution: "uuid@npm:9.0.1"
   bin:

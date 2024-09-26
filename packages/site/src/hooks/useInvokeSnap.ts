@@ -13,25 +13,24 @@ export type InvokeSnapParams = {
  * config.
  * @returns The invokeSnap wrapper method.
  */
-export const useInvokeSnap = (snapId = defaultSnapOrigin) => {
+export function useInvokeSnap(snapId = defaultSnapOrigin) {
   const request = useRequest();
 
-  /**
-   * Invoke the requested Snap method.
-   *
-   * @param params - The invoke params.
-   * @param params.method - The method name.
-   * @param params.params - The method params.
-   * @returns The Snap response.
-   */
-  const invokeSnap = async ({ method, params }: InvokeSnapParams) =>
-    request({
+  // eslint-disable-next-line jsdoc/require-jsdoc
+  async function invokeSnap<SnapResponse>({
+    method,
+    params,
+  }: InvokeSnapParams) {
+    const response = request({
       method: 'wallet_invokeSnap',
       params: {
         snapId,
         request: params ? { method, params } : { method },
       },
     });
+    const result = await response;
 
+    return { response: result as SnapResponse };
+  }
   return invokeSnap;
-};
+}
